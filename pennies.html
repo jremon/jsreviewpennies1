@@ -1,0 +1,29 @@
+<script>
+var reward;
+var msg;
+var allreward;
+
+function howmuch(days,rw){
+reward=rw;
+allreward=0;
+document.getElementById('log').innerHTML="";
+
+for(var i=1;i<=days;i++){
+reward*=2;
+reward=Math.round(reward * 100) / 100;
+msg="On day "+i+", the servant would be given "+reward+"USD\r\n";
+document.getElementById('log').innerHTML+=msg;
+console.log(msg);
+allreward+=reward;
+}
+msg="\r\nAt the end, the servant was given a total amount of "+allreward+" USD!";
+document.getElementById('log').innerHTML+=msg;
+console.log(msg);
+
+}
+</script>
+
+Starting amount: <input id="start" value="0.01"> USD in <input id="days" onkeyup="document.getElementById('mybutton').value='How much in '+this.value+' days?';" value="30"> days
+<br>
+<input id="mybutton" type=button value="How much in 30 days?" onclick="howmuch(document.getElementById('days').value,document.getElementById('start').value);">
+<br><pre id="log"></pre>
